@@ -3,20 +3,21 @@ import 'package:get/get.dart';
 import 'package:indexed/indexed.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';
+import 'package:wowmomo/pages/home/home_page.dart';
 
 class Otp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // appBar: AppBar(
-        //   title: Text("login page"),
-        // ),
+        appBar: AppBar(
+          title: Text("login page"),
+        ),
         body: Container(
-      width: double.infinity,
-      child: Indexer(
-        children: [TopBox(), BottomBox()],
-      ),
-    ));
+          width: double.infinity,
+          child: Indexer(
+            children: [TopBox(), BottomBox()],
+          ),
+        ));
   }
 }
 
@@ -80,8 +81,8 @@ Widget BottomBox() {
             const Text(
               "+91 7001727360",
               style: TextStyle(
-                color: Color.fromRGBO(249, 179, 19, 1),
-              ),
+                  color: Color.fromRGBO(249, 179, 19, 1),
+                  fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               height: 20,
@@ -131,7 +132,8 @@ Widget BottomBox() {
                     backgroundColor: Color.fromRGBO(249, 179, 19, 1),
                   ),
                   onPressed: () {
-                    Get.toNamed("/otp");
+                    Get.to(HomePage());
+                    Get.snackbar("title", "message");
                   },
                   child: const Text("Enter")),
             ),
