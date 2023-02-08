@@ -1,8 +1,10 @@
 import "package:flutter/material.dart";
 import 'package:get/get.dart';
 import 'package:indexed/indexed.dart';
+import 'package:otp_text_field/otp_field.dart';
+import 'package:otp_text_field/style.dart';
 
-class LoginPage extends StatelessWidget {
+class Otp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,9 +30,9 @@ Widget TopBox() {
       top: 0,
       left: 0,
       child: Container(
-          height: 400,
+          height: 500,
           width: 400,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage("assets/images/log_back.png"),
               fit: BoxFit.fill,
@@ -42,7 +44,7 @@ Widget TopBox() {
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
               CircleAvatar(
-                  radius: 50,
+                  radius: 70,
                   backgroundImage: AssetImage("assets/images/logo.png")
                   // NetworkImage(
                   //     "https://vrchennai.com/UploadFile/StoreImage/wow-momo-th.jpg"),
@@ -57,7 +59,7 @@ Widget BottomBox() {
   return Indexed(
     index: 2, //last at widget tree, but middle in order
     child: Positioned(
-      top: 320,
+      top: 390,
       left: 0,
       child: Container(
         decoration: const BoxDecoration(
@@ -71,79 +73,52 @@ Widget BottomBox() {
             const SizedBox(
               height: 70,
             ),
-            const Text(
-              "#MoreWOWEveryday",
-              style: TextStyle(
-                  color: Color.fromRGBO(249, 179, 19, 1),
-                  // color: Colors.amber[700],
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30),
-            ),
-            RichText(
-              text: const TextSpan(
-                  // text: "Fulfill your",
-                  // style: TextStyle(color: Colors.black, fontSize: 30),
-                  children: [
-                    TextSpan(
-                      text: " Fulfill your",
-                      style: TextStyle(color: Colors.black, fontSize: 30),
-                    ),
-                    TextSpan(
-                      text: " cravings",
-                      style: TextStyle(
-                          color: Color.fromRGBO(249, 179, 19, 1), fontSize: 30),
-                    ),
-                    const TextSpan(
-                      text: " here!",
-                      style: TextStyle(color: Colors.black, fontSize: 30),
-                    ),
-                  ]),
-            ),
+            Text("We have sent a verification code to"),
             const SizedBox(
               height: 10,
             ),
-            Text("Experience Health and Happiness in every"),
-            Text("Order!"),
-            const SizedBox(
-              height: 30,
-            ),
-            SizedBox(
-              width: 300,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Expanded(flex: 1, child: Divider(color: Colors.black)),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    "Sign In / Register",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(child: Divider(color: Colors.black)),
-                ],
+            const Text(
+              "+91 7001727360",
+              style: TextStyle(
+                color: Color.fromRGBO(249, 179, 19, 1),
               ),
             ),
             const SizedBox(
               height: 20,
             ),
+
             SizedBox(
               width: 300,
               height: 50,
-              child: TextField(
-                keyboardType: TextInputType.numberWithOptions(),
-                decoration: InputDecoration(
-                    hintText: '+91 7001727360',
-                    filled: true,
-                    fillColor: Colors.grey[200],
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    )),
+              child: OTPTextField(
+                length: 6,
+                // width:MediaQuery.of(context).size.width,
+                fieldWidth: 38,
+                outlineBorderRadius: 0,
+
+                style: const TextStyle(fontSize: 17),
+                textFieldAlignment: MainAxisAlignment.spaceAround,
+                fieldStyle: FieldStyle.box,
+                onCompleted: (pin) {
+                  print("Completed: " + pin);
+                },
               ),
             ),
+
+            // SizedBox(
+            //   width: 300,
+            //   height: 50,
+            //   child: TextField(
+            //     keyboardType: TextInputType.numberWithOptions(),
+            //     decoration: InputDecoration(
+            //         hintText: '+91 7001727360',
+            //         filled: true,
+            //         fillColor: Colors.grey[200],
+            //         border: OutlineInputBorder(
+            //           borderRadius: BorderRadius.circular(30),
+            //         )),
+            //   ),
+            // ),
             const SizedBox(
               height: 20,
             ),
@@ -158,7 +133,7 @@ Widget BottomBox() {
                   onPressed: () {
                     Get.toNamed("/otp");
                   },
-                  child: const Text("Next")),
+                  child: const Text("Enter")),
             ),
             const SizedBox(
               height: 10,
