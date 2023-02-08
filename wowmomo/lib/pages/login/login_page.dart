@@ -4,7 +4,6 @@ import 'package:indexed/indexed.dart';
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
         // appBar: AppBar(
         //   title: Text("login page"),
@@ -19,7 +18,7 @@ class LoginPage extends StatelessWidget {
               top: 0,
               left: 0,
               child: Container(
-                  height: 300,
+                  height: 400,
                   width: 400,
                   color: Colors.amber[700],
                   child: Column(
@@ -39,7 +38,7 @@ class LoginPage extends StatelessWidget {
           Indexed(
             index: 2, //last at widget tree, but middle in order
             child: Positioned(
-              top: 250,
+              top: 320,
               left: 0,
               child: Container(
                 decoration: const BoxDecoration(
@@ -47,7 +46,7 @@ class LoginPage extends StatelessWidget {
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(50),
                         topRight: Radius.circular(60))),
-                height: 500,
+                height: 470,
                 width: 400,
                 child: Column(
                   children: [
@@ -76,26 +75,43 @@ class LoginPage extends StatelessWidget {
                               style: TextStyle(
                                   color: Colors.amber[700], fontSize: 30),
                             ),
-                            TextSpan(
+                            const TextSpan(
                               text: " here!",
                               style:
                                   TextStyle(color: Colors.black, fontSize: 30),
                             ),
                           ]),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Text("Experience Health and Happiness in every"),
                     Text("Order!"),
-                    SizedBox(
+                    const SizedBox(
                       height: 30,
                     ),
-                    Text(
-                      "Sign In / Register",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
                     SizedBox(
+                      width: 300,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Expanded(
+                              flex: 1, child: Divider(color: Colors.black)),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            "Sign In / Register",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Expanded(child: Divider(color: Colors.black)),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
                       height: 20,
                     ),
                     SizedBox(
@@ -112,7 +128,7 @@ class LoginPage extends StatelessWidget {
                             )),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     SizedBox(
@@ -123,30 +139,61 @@ class LoginPage extends StatelessWidget {
                               shape: StadiumBorder(),
                               backgroundColor: Colors.amber[700]),
                           onPressed: () {},
-                          child: Text("Next")),
+                          child: const Text("Next")),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Text("Or"),
-                    SizedBox(
+                    Container(
+                      width: 300,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Expanded(
+                              flex: 1, child: Divider(color: Colors.black)),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            "Or",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Expanded(child: Divider(color: Colors.black)),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
                       height: 10,
                     ),
-                     Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         CircleAvatar(
-                          backgroundColor: Colors.transparent,
-                          backgroundImage:
-                              AssetImage("assets/images/google_logo.png"),
+                          backgroundColor: Colors.grey[100],
+                          radius: 20,
+                          child: const CircleAvatar(
+                            backgroundColor: Colors.white,
+                            radius: 15,
+                            backgroundImage:
+                                AssetImage("assets/images/google_logo.png"),
+                          ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                         CircleAvatar(
-                          backgroundColor: Colors.transparent,
-                          backgroundImage:
-                              AssetImage("assets/images/threedot.png"),
+                          backgroundColor: Colors.grey[100],
+                          radius: 20,
+                          child: const CircleAvatar(
+                            radius: 15,
+                            backgroundColor: Colors.white,
+                            // backgroundColor: Colors.transparent,
+                            backgroundImage:
+                                AssetImage("assets/images/threedot.png"),
+                          ),
                         ),
                       ],
                     )
