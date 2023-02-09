@@ -13,7 +13,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return GetMaterialApp(
-      theme: ThemeData(primarySwatch: Colors.amber),
+      theme: ThemeData(
+          outlinedButtonTheme: OutlinedButtonThemeData(
+            style: OutlinedButton.styleFrom(
+                backgroundColor: Colors.amber.shade100,
+                shape: RoundedRectangleBorder(),
+                side: BorderSide(color: Colors.amber)),
+          ),
+          primarySwatch: Colors.amber),
       debugShowCheckedModeBanner: false,
       title: "WoW MoMo App",
       home: LoginPage(),
