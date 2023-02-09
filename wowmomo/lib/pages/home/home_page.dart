@@ -9,8 +9,8 @@ class HomePage extends StatelessWidget {
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed, // Fixed
           backgroundColor: Colors.white, // <-- This works for fixed
-          selectedItemColor: Color.fromRGBO(249, 179, 19, 1),
-          unselectedItemColor: Colors.grey,
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Color.fromRGBO(249, 179, 19, 1),
           items: const [
             BottomNavigationBarItem(
               icon: Icon(Icons.restaurant),
@@ -60,147 +60,199 @@ class HomePage extends StatelessWidget {
             // height: MediaQuery.of(context).size.height,
             height: MediaQuery.of(context).size.height,
             // color: Colors.red,
-            child: Column(
+            child: Stack(
               children: [
-                const SizedBox(
-                  height: 30,
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
-                    SizedBox(
-                      width: 60,
-                      child: Icon(
-                        Icons.location_on,
-                        size: 40,
-                      ),
-                    ),
-                    Expanded(child: Text("Home")),
-                    SizedBox(
-                      width: 60,
-                      child: Text("Wallet"),
-                    ),
-                    SizedBox(
-                      width: 100,
-                      child: Text("Shopping Cart"),
-                    ),
-                  ],
-                ),
-                const TextField(
-                  decoration: InputDecoration(hintText: "Search field"),
-                ),
-                Row(
-                  children: const [
-                    Expanded(
-                        child: Text(
-                      "Delivery",
-                      textAlign: TextAlign.center,
-                    )),
-                    Expanded(
-                        child: Text(
-                      "Dine-in",
-                      textAlign: TextAlign.center,
-                    )),
-                  ],
-                ),
-
-                // ?--------------Delivery
-
-                SizedBox(
-                    height: 100,
-                    child: ListView.builder(
-                      itemCount: 6,
-                      itemBuilder: (context, index) {
-                        return SizedBox(
-                            width: 100,
-                            height: 100,
-                            child: Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Image.asset(
-                                'assets/images/Momos.png',
-                                fit: BoxFit.cover,
-                              ),
-                            ));
-                      },
-                      scrollDirection: Axis.horizontal,
-                    )),
-
-                const SizedBox(
-                  height: 20,
-                ),
-                SizedBox(
-                  width: 300,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Expanded(flex: 1, child: Divider(color: Colors.black)),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "Deal of the day",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Expanded(child: Divider(color: Colors.black)),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  height: 150,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.blue,
-                      image: const DecorationImage(
-                          fit: BoxFit.fill,
-                          image: AssetImage("assets/images/hero.png"))),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                SizedBox(
-                  width: 300,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Expanded(flex: 1, child: Divider(color: Colors.black)),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "Deal of the day",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Expanded(child: Divider(color: Colors.black)),
-                    ],
-                  ),
-                ),
-                ProductCard(context: context),
-                // ----------------------------
-
-                // Container(
-                //     height: 200,
-                //     width: MediaQuery.of(context).size.width * 0.9,
-                //     child: ListView.builder(
-                //       itemCount: 6,
-                //       itemBuilder: (context, index) {
-                //         return ProductCard(context: context);
-                //       },
-                //     )),
+                ScrollPage(context: context),
+                FixedNavbar(context: context),
               ],
             )));
   }
+}
+
+Widget FixedNavbar({required context}) {
+  return Container(
+    padding: EdgeInsets.all(15),
+    height: 90,
+    color: Colors.white,
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Expanded(
+            child: Row(
+          children: [
+            Icon(
+              Icons.location_on,
+              size: 30,
+            ),
+            Text("Home",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))
+          ],
+        )),
+        SizedBox(
+          width: 90,
+          child: Row(
+            children: [
+              Icon(
+                Icons.account_balance_wallet,
+                size: 30,
+              ),
+              Text(
+                " \₹130",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              )
+            ],
+          ),
+        ),
+        SizedBox(
+          width: 100,
+          child: Icon(
+            Icons.add_shopping_cart,
+            size: 30,
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget ScrollPage({required context}) {
+  return SingleChildScrollView(
+      child: Column(
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      const SizedBox(
+        height: 100,
+      ),
+
+      SizedBox(
+        width: MediaQuery.of(context).size.width * 0.9,
+        child: TextField(
+          decoration: InputDecoration(
+            isDense: true,
+            hintText: 'Search for cuisine, item or more',
+            hintStyle: TextStyle(color: Colors.grey),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30),
+            ),
+            prefixIcon: Icon(
+              Icons.search,
+              size: 40,
+            ),
+            // prefixStyle: TextStyle(),
+            prefixIconConstraints: BoxConstraints(minWidth: 40, minHeight: 20),
+          ),
+        ),
+      ),
+
+      SizedBox(
+        height: 20,
+      ),
+      Row(
+        children: const [
+          Expanded(
+              child: Text(
+            "Delivery",
+            textAlign: TextAlign.center,
+          )),
+          Expanded(
+              child: Text(
+            "Dine-in",
+            textAlign: TextAlign.center,
+          )),
+        ],
+      ),
+      SizedBox(
+        height: 20,
+      ),
+      // ?--------------Delivery
+
+      SizedBox(
+          height: 100,
+          width: MediaQuery.of(context).size.width * 0.9,
+          child: ListView.builder(
+            itemCount: 6,
+            itemBuilder: (context, index) {
+              return SizedBox(
+                  width: 100,
+                  height: 100,
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Image.asset(
+                      'assets/images/Momos.png',
+                      fit: BoxFit.cover,
+                    ),
+                  ));
+            },
+            scrollDirection: Axis.horizontal,
+          )),
+
+      const SizedBox(
+        height: 30,
+      ),
+      SizedBox(
+        width: 300,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Expanded(flex: 1, child: Divider(color: Colors.black)),
+            SizedBox(
+              width: 10,
+            ),
+            Text(
+              "Deal of the day",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Expanded(child: Divider(color: Colors.black)),
+          ],
+        ),
+      ),
+      const SizedBox(
+        height: 20,
+      ),
+      Container(
+        width: MediaQuery.of(context).size.width * 0.9,
+        height: 150,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: Colors.blue,
+            image: const DecorationImage(
+                fit: BoxFit.fill, image: AssetImage("assets/images/hero.png"))),
+      ),
+      const SizedBox(
+        height: 20,
+      ),
+      SizedBox(
+        width: 300,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Expanded(flex: 1, child: Divider(color: Colors.black)),
+            SizedBox(
+              width: 10,
+            ),
+            Text(
+              "Best Sellings Items",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Expanded(child: Divider(color: Colors.black)),
+          ],
+        ),
+      ),
+
+      ProductCard(context: context),
+      ProductCard(context: context),
+      ProductCard(context: context),
+      // ----------------------------
+    ],
+  ));
 }
 
 // ignore: non_constant_identifier_names
@@ -209,6 +261,7 @@ Widget ProductCard({required context}) {
       // color: Colors.green,
       margin: EdgeInsets.only(top: 10),
       height: 180,
+      width: MediaQuery.of(context).size.width * 0.9,
       child: Row(
         children: [
           Container(
