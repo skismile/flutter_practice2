@@ -11,8 +11,12 @@ class LoginPage extends StatelessWidget {
         // ),
         body: Container(
       width: double.infinity,
-      child: Indexer(
-        children: [TopBox(), BottomBox()],
+      child: Stack(
+        children: [
+          TopBox(context: context),
+          WowLogo(),
+          BottomBox(context: context)
+        ],
       ),
     ));
   }
@@ -20,202 +24,209 @@ class LoginPage extends StatelessWidget {
 
 // ! ---------------------------------------------------------------
 
-// ignore: non_constant_identifier_names
-Widget TopBox() {
-  return Indexed(
-    index: 1, //less the value, below the order
-    child: Positioned(
-      top: 0,
+Widget WowLogo() {
+  return Positioned(
+      top: 100,
       left: 0,
-      child: Container(
-          height: 400,
-          width: 400,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/log_back.png"),
-              fit: BoxFit.fill,
-            ),
-          ),
-          // color: Colors.amber[700],
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              CircleAvatar(
-                  radius: 50,
-                  backgroundImage: AssetImage("assets/images/logo.png")
-                  // NetworkImage(
-                  //     "https://vrchennai.com/UploadFile/StoreImage/wow-momo-th.jpg"),
-                  )
-            ],
-          )),
+      right: 0,
+      child: Image.asset(
+        "assets/images/logo.png",
+        width: 100,
+        height: 100,
+      )
+      // NetworkImage(
+      //     "https://vrchennai.com/UploadFile/StoreImage/wow-momo-th.jpg"),
+      );
+}
+
+// ignore: non_constant_identifier_names
+Widget TopBox({required context}) {
+  return //less the value, below the order
+      Positioned(
+    top: 0,
+    left: 0,
+    child: Container(
+      height: 900,
+      // width: 400,
+      width: MediaQuery.of(context).size.width,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/images/log_back.png"),
+          fit: BoxFit.fill,
+        ),
+      ),
+      // color: Colors.amber[700],
     ),
   );
 }
 
-Widget BottomBox() {
-  return Indexed(
-    index: 2, //last at widget tree, but middle in order
-    child: Positioned(
-      top: 320,
-      left: 0,
-      child: Container(
-        decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(50), topRight: Radius.circular(70))),
-        height: 470,
-        width: 400,
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 70,
-            ),
-            const Text(
-              "#MoreWOWEveryday",
-              style: TextStyle(
-                  color: Color.fromRGBO(249, 179, 19, 1),
-                  // color: Colors.amber[700],
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30),
-            ),
-            RichText(
-              text: const TextSpan(
-                  // text: "Fulfill your",
-                  // style: TextStyle(color: Colors.black, fontSize: 30),
-                  children: [
-                    TextSpan(
-                      text: " Fulfill your",
-                      style: TextStyle(color: Colors.black, fontSize: 30),
-                    ),
-                    TextSpan(
-                      text: " cravings",
-                      style: TextStyle(
-                          color: Color.fromRGBO(249, 179, 19, 1), fontSize: 30),
-                    ),
-                    const TextSpan(
-                      text: " here!",
-                      style: TextStyle(color: Colors.black, fontSize: 30),
-                    ),
-                  ]),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Text("Experience Health and Happiness in every"),
-            Text("Order!"),
-            const SizedBox(
-              height: 30,
-            ),
-            SizedBox(
-              width: 300,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Expanded(flex: 1, child: Divider(color: Colors.black)),
-                  SizedBox(
-                    width: 10,
+// -----------------------------------------------------
+Widget BottomBox({required context}) {
+  return Positioned(
+    bottom: 0,
+    left: 0,
+    child: Container(
+      decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(50), topRight: Radius.circular(50))),
+      height: 470,
+      width: MediaQuery.of(context).size.width,
+      child: Column(
+        children: [
+          const SizedBox(
+            height: 70,
+          ),
+          const Text(
+            "#MoreWOWEveryday",
+            style: TextStyle(
+                color: Color.fromRGBO(249, 179, 19, 1),
+                // color: Colors.amber[700],
+                fontWeight: FontWeight.bold,
+                fontSize: 30),
+          ),
+          RichText(
+            text: const TextSpan(
+                // text: "Fulfill your",
+                // style: TextStyle(color: Colors.black, fontSize: 30),
+                children: [
+                  TextSpan(
+                    text: " Fulfill your",
+                    style: TextStyle(color: Colors.black, fontSize: 30),
                   ),
-                  Text(
-                    "Sign In / Register",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                  TextSpan(
+                    text: " cravings",
+                    style: TextStyle(
+                        color: Color.fromRGBO(249, 179, 19, 1), fontSize: 30),
                   ),
-                  SizedBox(
-                    width: 10,
+                  const TextSpan(
+                    text: " here!",
+                    style: TextStyle(color: Colors.black, fontSize: 30),
                   ),
-                  Expanded(child: Divider(color: Colors.black)),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            SizedBox(
-              width: 300,
-              height: 50,
-              child: TextField(
-                keyboardType: TextInputType.numberWithOptions(),
-                decoration: InputDecoration(
-                    hintText: '+91 7001727360',
-                    filled: true,
-                    fillColor: Colors.grey[200],
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    )),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            SizedBox(
-              width: 300,
-              height: 50,
-              child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: StadiumBorder(),
-                    backgroundColor: Color.fromRGBO(249, 179, 19, 1),
-                  ),
-                  onPressed: () {
-                    Get.toNamed("/otp");
-                  },
-                  child: const Text("Next")),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              width: 300,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Expanded(flex: 1, child: Divider(color: Colors.black)),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    "Or",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(child: Divider(color: Colors.black)),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
+                ]),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Text("Experience Health and Happiness in every"),
+          Text("Order!"),
+          const SizedBox(
+            height: 30,
+          ),
+          SizedBox(
+            width: 300,
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CircleAvatar(
-                  backgroundColor: Colors.grey[100],
-                  radius: 20,
-                  child: const CircleAvatar(
-                    backgroundColor: Colors.white,
-                    radius: 15,
-                    backgroundImage:
-                        AssetImage("assets/images/google_logo.png"),
-                  ),
+              children: const [
+                Expanded(flex: 1, child: Divider(color: Colors.black)),
+                SizedBox(
+                  width: 10,
                 ),
-                const SizedBox(
-                  width: 20,
+                Text(
+                  "Sign In / Register",
+                  style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                CircleAvatar(
-                  backgroundColor: Colors.grey[100],
-                  radius: 20,
-                  child: const CircleAvatar(
-                    radius: 15,
-                    backgroundColor: Colors.white,
-                    // backgroundColor: Colors.transparent,
-                    backgroundImage: AssetImage("assets/images/threedot.png"),
-                  ),
+                SizedBox(
+                  width: 10,
                 ),
+                Expanded(child: Divider(color: Colors.black)),
               ],
-            )
-          ],
-        ),
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          SizedBox(
+            width: 300,
+            height: 50,
+            child: TextField(
+              keyboardType: TextInputType.numberWithOptions(),
+              decoration: InputDecoration(
+                isDense: true,
+                hintText: 'Enter your number',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                prefixIcon: const Text(
+                  "+91",
+                  textAlign: TextAlign.center,
+                ),
+                // prefixStyle: TextStyle(),
+                prefixIconConstraints:
+                    BoxConstraints(minWidth: 40, minHeight: 20),
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          SizedBox(
+            width: 300,
+            height: 50,
+            child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shape: StadiumBorder(),
+                  backgroundColor: Color.fromRGBO(249, 179, 19, 1),
+                ),
+                onPressed: () {
+                  Get.toNamed("/otp");
+                },
+                child: const Text("Next")),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Container(
+            width: 300,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Expanded(flex: 1, child: Divider(color: Colors.black)),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  "Or",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Expanded(child: Divider(color: Colors.black)),
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                backgroundColor: Colors.grey[100],
+                radius: 20,
+                child: const CircleAvatar(
+                  backgroundColor: Colors.white,
+                  radius: 15,
+                  backgroundImage: AssetImage("assets/images/google_logo.png"),
+                ),
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+              CircleAvatar(
+                backgroundColor: Colors.grey[100],
+                radius: 20,
+                child: const CircleAvatar(
+                  radius: 15,
+                  backgroundColor: Colors.white,
+                  // backgroundColor: Colors.transparent,
+                  backgroundImage: AssetImage("assets/images/threedot.png"),
+                ),
+              ),
+            ],
+          )
+        ],
       ),
     ),
   );
