@@ -9,7 +9,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<bool> isSelected = [true, false];
-  TogglestateHandler(newIndex) {
+
+  void togglestateHandler(newIndex) {
     setState(() {
       for (int index = 0; index < isSelected.length; index++) {
         if (index == newIndex) {
@@ -24,34 +25,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed, // Fixed
-          backgroundColor: Colors.white, // <-- This works for fixed
-          selectedItemColor: Colors.black,
-          unselectedItemColor: Color.fromRGBO(249, 179, 19, 1),
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.restaurant),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.local_offer_outlined),
-              label: 'Offers',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.message),
-              label: 'Wow Club',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.ramen_dining),
-              label: 'Nutrition',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.account_box_outlined),
-              label: 'Account',
-            ),
-          ],
-        ),
+        bottomNavigationBar: BottomNavBar(),
         floatingActionButton: FloatingActionButton(
             onPressed: () {},
             child: Container(
@@ -73,7 +47,7 @@ class _HomePageState extends State<HomePage> {
         // appBar: AppBar(
         //   title: const Text("Home Page"),
         // ),
-        body: Container(
+        body: SizedBox(
             width: double.infinity,
             // height: MediaQuery.of(context).size.height,
             height: MediaQuery.of(context).size.height,
@@ -81,32 +55,67 @@ class _HomePageState extends State<HomePage> {
             child: Stack(
               children: [
                 ScrollPage(
-                  context: context,
-                  togglestateHandler: TogglestateHandler,
-                  isSelected: isSelected,
-                ),
+                    context: context,
+                    togglestateHandler: togglestateHandler,
+                    isSelected: isSelected,
+                    index: isSelected[0] ? 0 : 1),
                 FixedNavbar(context: context),
               ],
             )));
   }
 }
 
+// ! ----------------------------------------------------------
+
+Widget BottomNavBar() {
+  return BottomNavigationBar(
+    type: BottomNavigationBarType.fixed, // Fixed
+    backgroundColor: Colors.white, // <-- This works for fixed
+    selectedItemColor: Colors.black,
+    unselectedItemColor: Color.fromRGBO(249, 179, 19, 1),
+    items: const [
+      BottomNavigationBarItem(
+        icon: Icon(Icons.restaurant),
+        label: 'Home',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.local_offer_outlined),
+        label: 'Offers',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.view_in_ar_outlined),
+        label: 'Wow Club',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.ramen_dining),
+        label: 'Nutrition',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.account_box_outlined),
+        label: 'Account',
+      ),
+    ],
+  );
+}
+
+// ignore: non_constant_identifier_names
 Widget ToggleButton(
-    {required TogglestateHandler, required isSelected, required context}) {
+    {required togglestateHandler, required isSelected, required context}) {
   return Container(
       padding: const EdgeInsets.fromLTRB(30, 30, 30, 10),
       child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
         ToggleButtons(
           isSelected: isSelected,
+          // selectedColor: const Color(0xFFF9B313),
           selectedColor: const Color(0xFFFFFFFF),
-          color: const Color(0xFFB4B2B2),
+          color: Color.fromARGB(255, 8, 8, 8),
           fillColor: const Color(0xFFF9B313),
           splashColor: const Color(0xFFF9B313),
           highlightColor: const Color(0xFFF9B313),
           textStyle: const TextStyle(fontWeight: FontWeight.bold),
           renderBorder: true,
-          borderColor: const Color(0xFFCFCFCF),
-          borderWidth: 1.5,
+          // borderColor: const Color(0xFFCFCFCF),
+          borderWidth: 2,
           borderRadius: BorderRadius.circular(44),
           selectedBorderColor: const Color(0xFFF9B313),
           constraints: BoxConstraints(
@@ -124,48 +133,73 @@ Widget ToggleButton(
             ),
           ],
           onPressed: (int newIndex) {
-            TogglestateHandler(newIndex);
+            togglestateHandler(newIndex);
           },
         ),
       ]));
 }
 
+// ignore: non_constant_identifier_names
 Widget FixedNavbar({required context}) {
   return Container(
     padding: EdgeInsets.all(15),
-    height: 90,
+    height: 100,
     color: Colors.white,
     child: Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Expanded(
-            child: Row(
-          children: [
-            Icon(
-              Icons.location_on,
-              size: 30,
-            ),
-            Text("Home",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))
-          ],
-        )),
+        Container(
+            // height: 100,
+            margin: EdgeInsets.only(top: 20),
+            // padding: EdgeInsets.only(left: 5),
+            width: MediaQuery.of(context).size.width * 0.6,
+            // color: Colors.red,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Row(
+                  children: const [
+                    Icon(
+                      Icons.location_on,
+                      size: 30,
+                    ),
+                    Text("Home",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold))
+                  ],
+                ),
+                Container(
+                  padding: EdgeInsets.only(left: 10),
+                  child: Text(
+                      overflow: TextOverflow.ellipsis,
+                      "A-1,101,North House Building"),
+                )
+              ],
+            )),
+        // const SizedBox(
+        //   width: 20,
+        // ),
         SizedBox(
-          width: 90,
+          width: 80,
           child: Row(
-            children: [
+            children: const [
               Icon(
                 Icons.account_balance_wallet,
                 size: 30,
               ),
               Text(
-                " \₹130",
+                " ₹130",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               )
             ],
           ),
         ),
-        SizedBox(
-          width: 100,
+        const SizedBox(
+          width: 10,
+        ),
+        const SizedBox(
+          width: 20,
           child: Icon(
             Icons.add_shopping_cart,
             size: 30,
@@ -176,11 +210,12 @@ Widget FixedNavbar({required context}) {
   );
 }
 
-Widget ScrollPage({
-  required context,
-  required togglestateHandler,
-  required isSelected,
-}) {
+// ignore: non_constant_identifier_names
+Widget ScrollPage(
+    {required context,
+    required togglestateHandler,
+    required isSelected,
+    required index}) {
   return SingleChildScrollView(
       child: Column(
     crossAxisAlignment: CrossAxisAlignment.center,
@@ -203,25 +238,55 @@ Widget ScrollPage({
               Icons.search,
               size: 40,
             ),
+            // suffixIcon: Icon(
+            //   Icons.search,
+            //   size: 40,
+            // ),
             // prefixStyle: TextStyle(),
+            // suffixIconConstraints: BoxConstraints(minWidth: 40, minHeight: 20),
             prefixIconConstraints: BoxConstraints(minWidth: 40, minHeight: 20),
           ),
         ),
       ),
 
       ToggleButton(
-          TogglestateHandler: togglestateHandler,
+          togglestateHandler: togglestateHandler,
           isSelected: isSelected,
           context: context),
       SizedBox(
-        height: 20,
+        height: 5,
       ),
 
-      SizedBox(
-        height: 20,
-      ),
       // ?--------------Delivery
+      index == 1
+          ? DineinPage(context: context)
+          : DeliveryPage(context: context),
+      // ----------------------------
+    ],
+  ));
+}
 
+Widget DineinPage({required context}) {
+  return Container(
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Outlets near you",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        ProductCard(context: context),
+        ProductCard(context: context),
+        ProductCard(context: context),
+        ProductCard(context: context),
+      ],
+    ),
+  );
+}
+
+Widget DeliveryPage({required context}) {
+  return Column(
+    children: [
       SizedBox(
           height: 100,
           width: MediaQuery.of(context).size.width * 0.9,
@@ -236,14 +301,13 @@ Widget ScrollPage({
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Image.asset(
-                      'assets/images/Momos.png',
+                      'assets/images/tandoor.png',
                       fit: BoxFit.cover,
                     ),
                   ));
             },
             scrollDirection: Axis.horizontal,
           )),
-
       const SizedBox(
         height: 30,
       ),
@@ -272,10 +336,10 @@ Widget ScrollPage({
       ),
       Container(
         width: MediaQuery.of(context).size.width * 0.9,
-        height: 150,
+        height: 140,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: Colors.blue,
+            // color: Colors.blue,
             image: const DecorationImage(
                 fit: BoxFit.fill, image: AssetImage("assets/images/hero.png"))),
       ),
@@ -302,13 +366,11 @@ Widget ScrollPage({
           ],
         ),
       ),
-
       ProductCard(context: context),
       ProductCard(context: context),
       ProductCard(context: context),
-      // ----------------------------
     ],
-  ));
+  );
 }
 
 // ignore: non_constant_identifier_names
@@ -316,13 +378,13 @@ Widget ProductCard({required context}) {
   return Container(
       // color: Colors.green,
       margin: EdgeInsets.only(top: 10),
-      height: 150,
+      height: 125,
       width: MediaQuery.of(context).size.width * 0.9,
       child: Row(
         children: [
           Container(
-            height: 150,
-            width: 130,
+            height: 125,
+            width: MediaQuery.of(context).size.width * 0.3,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 image: const DecorationImage(
@@ -333,62 +395,80 @@ Widget ProductCard({required context}) {
             width: 10,
           ),
           SizedBox(
+              width: MediaQuery.of(context).size.width * 0.5,
               child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                "Veg Thukpa",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                children: const [
-                  Text(
-                    "4.5",
-                    style: TextStyle(
-                        color: Color.fromRGBO(249, 179, 19, 1),
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    "27 mins",
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Veg Thukpa",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
-                ],
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              const Text(
-                "A Tibetan noodle soup with green \n vegetables and flat noodles. Serves 1",
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              SizedBox(
-                width: 100,
-                child: OutlinedButton(
-                  onPressed: () {},
-                  child: Text('ADD'),
-                  style: OutlinedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Row(
+                    children: const [
+                      Icon(
+                        Icons.star_outline_outlined,
+                        color: Color.fromRGBO(249, 179, 19, 1),
+                        size: 18,
+                      ),
+                      Text(
+                        "4.5",
+                        style: TextStyle(
+                            color: Color.fromRGBO(249, 179, 19, 1),
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        ".",
+                        style: TextStyle(
+                            fontSize: 25, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        "27 mins",
+                        style: TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  const Text(
+                    "A Tibetan noodle soup with green \n vegetables and flat noodles. Serves 1",
+                    maxLines: 2,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
-                ),
-              )
-            ],
-          ))
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  SizedBox(
+                    width: 80,
+                    height: 27,
+                    child: OutlinedButton(
+                      onPressed: () {},
+                      child: Text('ADD'),
+                      style: OutlinedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ))
         ],
       ));
 }

@@ -99,7 +99,7 @@ Widget BottomBox({required context}) {
                     style: TextStyle(
                         color: Color.fromRGBO(249, 179, 19, 1), fontSize: 30),
                   ),
-                  const TextSpan(
+                  TextSpan(
                     text: " here!",
                     style: TextStyle(color: Colors.black, fontSize: 30),
                   ),
