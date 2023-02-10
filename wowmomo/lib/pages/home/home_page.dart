@@ -1,7 +1,25 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List<bool> isSelected = [true, false];
+  TogglestateHandler(newIndex) {
+    setState(() {
+      for (int index = 0; index < isSelected.length; index++) {
+        if (index == newIndex) {
+          isSelected[index] = true;
+        } else {
+          isSelected[index] = false;
+        }
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,11 +80,54 @@ class HomePage extends StatelessWidget {
             // color: Colors.red,
             child: Stack(
               children: [
-                ScrollPage(context: context),
+                ScrollPage(
+                  context: context,
+                  togglestateHandler: TogglestateHandler,
+                  isSelected: isSelected,
+                ),
                 FixedNavbar(context: context),
               ],
             )));
   }
+}
+
+Widget ToggleButton(
+    {required TogglestateHandler, required isSelected, required context}) {
+  return Container(
+      padding: const EdgeInsets.fromLTRB(30, 30, 30, 10),
+      child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+        ToggleButtons(
+          isSelected: isSelected,
+          selectedColor: const Color(0xFFFFFFFF),
+          color: const Color(0xFFB4B2B2),
+          fillColor: const Color(0xFFF9B313),
+          splashColor: const Color(0xFFF9B313),
+          highlightColor: const Color(0xFFF9B313),
+          textStyle: const TextStyle(fontWeight: FontWeight.bold),
+          renderBorder: true,
+          borderColor: const Color(0xFFCFCFCF),
+          borderWidth: 1.5,
+          borderRadius: BorderRadius.circular(44),
+          selectedBorderColor: const Color(0xFFF9B313),
+          constraints: BoxConstraints(
+            minWidth: (MediaQuery.of(context).size.width * 0.7) / 2,
+            minHeight: 37,
+          ),
+          children: const [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12),
+              child: Text('Delivery', style: TextStyle(fontSize: 18)),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12),
+              child: Text('Dine-in', style: TextStyle(fontSize: 18)),
+            ),
+          ],
+          onPressed: (int newIndex) {
+            TogglestateHandler(newIndex);
+          },
+        ),
+      ]));
 }
 
 Widget FixedNavbar({required context}) {
@@ -115,7 +176,11 @@ Widget FixedNavbar({required context}) {
   );
 }
 
-Widget ScrollPage({required context}) {
+Widget ScrollPage({
+  required context,
+  required togglestateHandler,
+  required isSelected,
+}) {
   return SingleChildScrollView(
       child: Column(
     crossAxisAlignment: CrossAxisAlignment.center,
@@ -144,23 +209,14 @@ Widget ScrollPage({required context}) {
         ),
       ),
 
+      ToggleButton(
+          TogglestateHandler: togglestateHandler,
+          isSelected: isSelected,
+          context: context),
       SizedBox(
         height: 20,
       ),
-      Row(
-        children: const [
-          Expanded(
-              child: Text(
-            "Delivery",
-            textAlign: TextAlign.center,
-          )),
-          Expanded(
-              child: Text(
-            "Dine-in",
-            textAlign: TextAlign.center,
-          )),
-        ],
-      ),
+
       SizedBox(
         height: 20,
       ),
@@ -260,13 +316,13 @@ Widget ProductCard({required context}) {
   return Container(
       // color: Colors.green,
       margin: EdgeInsets.only(top: 10),
-      height: 180,
+      height: 150,
       width: MediaQuery.of(context).size.width * 0.9,
       child: Row(
         children: [
           Container(
-            height: 180,
-            width: 120,
+            height: 150,
+            width: 130,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 image: const DecorationImage(
@@ -283,7 +339,7 @@ Widget ProductCard({required context}) {
             children: [
               const Text(
                 "Veg Thukpa",
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(
                 height: 10,
@@ -294,7 +350,7 @@ Widget ProductCard({required context}) {
                     "4.5",
                     style: TextStyle(
                         color: Color.fromRGBO(249, 179, 19, 1),
-                        fontSize: 20,
+                        fontSize: 18,
                         fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
@@ -302,17 +358,17 @@ Widget ProductCard({required context}) {
                   ),
                   Text(
                     "27 mins",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
               const SizedBox(
-                height: 10,
+                height: 5,
               ),
               const Text(
                 "A Tibetan noodle soup with green \n vegetables and flat noodles. Serves 1",
                 style: TextStyle(
-                  fontSize: 13,
+                  fontSize: 12,
                   fontWeight: FontWeight.w500,
                 ),
               ),
