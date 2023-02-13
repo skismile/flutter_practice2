@@ -9,7 +9,7 @@ class BottomNavbar extends StatelessWidget{
     type: BottomNavigationBarType.fixed, // Fixed
     backgroundColor: Colors.white, // <-- This works for fixed
     selectedItemColor: Colors.black,
-    unselectedItemColor: Color.fromRGBO(249, 179, 19, 1),
+    unselectedItemColor:const Color.fromRGBO(249, 179, 19, 1),
     items: const [
       BottomNavigationBarItem(
         icon: Icon(Icons.restaurant),

@@ -9,7 +9,7 @@ class ScrollPage extends StatelessWidget {
   int index;
 
   ScrollPage(
-      {required this.togglestateHandler,
+      {super.key, required this.togglestateHandler,
       required this.isSelected,
       required this.index});
 
@@ -55,7 +55,7 @@ class ScrollPage extends StatelessWidget {
         //     togglestateHandler: togglestateHandler,
         //     isSelected: isSelected,
         //     context: context),
-        SizedBox(
+       const SizedBox(
           height: 5,
         ),
 

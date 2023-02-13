@@ -15,7 +15,7 @@ class MyToggleButton extends StatelessWidget {
             isSelected: isSelected,
             // selectedColor: const Color(0xFFF9B313),
             selectedColor: const Color(0xFFFFFFFF),
-            color: Color.fromARGB(255, 8, 8, 8),
+            color:const Color.fromARGB(255, 8, 8, 8),
             fillColor: const Color(0xFFF9B313),
             splashColor: const Color(0xFFF9B313),
             highlightColor: const Color(0xFFF9B313),

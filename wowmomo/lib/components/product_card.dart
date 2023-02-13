@@ -44,7 +44,7 @@ class ProductCard extends StatelessWidget {
                     Text(
                       title,
                       style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        const  TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
                       height: 5,

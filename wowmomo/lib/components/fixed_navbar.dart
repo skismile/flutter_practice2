@@ -35,7 +35,7 @@ class FixedNavbar extends StatelessWidget {
                   ),
                   Container(
                     padding: EdgeInsets.only(left: 10),
-                    child: Text(
+                    child:const Text(
                         overflow: TextOverflow.ellipsis,
                         "A-1,101,North House Building"),
                   )

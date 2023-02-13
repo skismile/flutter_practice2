@@ -47,9 +47,6 @@ class _HomePageState extends State<HomePage> {
                 color: Colors.white,
               ),
             )),
-        // appBar: AppBar(
-        //   title: const Text("Home Page"),
-        // ),
         body: SizedBox(
             width: double.infinity,
             // height: MediaQuery.of(context).size.height,
