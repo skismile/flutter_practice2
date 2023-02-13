@@ -199,7 +199,7 @@ Widget FixedNavbar({required context}) {
           width: 10,
         ),
         const SizedBox(
-          width: 20,
+          width: 20, 
           child: Icon(
             Icons.add_shopping_cart,
             size: 30,
