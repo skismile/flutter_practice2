@@ -6,11 +6,11 @@ class DataModel {
 }
 
 List<DataModel> dataList = [
-
-
-DataModel("title", "assets/images/logo.png", 30.8),
-DataModel("title", "assets/images/logo.png", 30.8),
-DataModel("title", "assets/images/logo.png", 30.8),
-DataModel("title", "assets/images/logo.png", 30.8),
-
+  DataModel("title", "assets/images/scroll_momo.png", 30.8),
+  DataModel("title", "assets/images/scroll_momo.png", 30.8),
+  DataModel("title", "assets/images/scroll_momo.png", 30.8),
+  DataModel("title", "assets/images/scroll_momo.png", 30.8),
+  DataModel("title", "assets/images/scroll_momo.png", 30.8),
+  DataModel("title", "assets/images/scroll_momo.png", 30.8),
+  DataModel("title", "assets/images/scroll_momo.png", 30.8),
 ];

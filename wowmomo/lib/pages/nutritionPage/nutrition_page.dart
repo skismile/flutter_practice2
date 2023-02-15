@@ -1,6 +1,8 @@
-import "package:carousel_widget_3d/carousel_widget_3d.dart";
+import "dart:math";
+
 import "package:flutter/material.dart";
 import "package:wowmomo/components/bottom_navbar.dart";
+import "package:wowmomo/components/round_carousel.dart";
 import "package:wowmomo/pages/nutritionPage/models.dart";
 
 class NutritionPage extends StatefulWidget {
@@ -11,92 +13,155 @@ class NutritionPage extends StatefulWidget {
 }
 
 class _NutritionPageState extends State<NutritionPage> {
-  late PageController _pageController;
-  int _currentPage = 0;
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    _pageController =
-        PageController(initialPage: _currentPage, viewportFraction: 0.8);
-  }
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-    _pageController.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: MyBottomNavbar(),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(40.0),
-              child: Center(
-                child: Text(
-                  "find your style",
-                  style: TextStyle(fontSize: 30),
-                ),
-              ),
-            ),
-            AspectRatio(
-              aspectRatio: 0.85,
-              child: PageView.builder(
-                itemCount: dataList.length,
-                physics: const ClampingScrollPhysics(),
-                controller: _pageController,
-                itemBuilder: (context, index) {
-                  return carouselView(index);
-                },
-              ),
-            )
-          ],
-        ),
+      body: Container(
+        width: double.infinity,
+        // color: Colors.red,
+        child: SingleChildScrollView(
+            child: SizedBox(
+                height: 5000,
+                child: Stack(
+                  children: [
+                    MyStack(context),
+                    Positioned(top: 70, left: 0, right: 0, child: carouse()),
+                    Positioned(
+                      left: 0,
+                      right: 0,
+                      top: 100,
+                      child: SizedBox(
+                        width: 300,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Expanded(
+                                flex: 1, child: Divider(color: Colors.black)),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              "Calorie Tracker",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Expanded(child: Divider(color: Colors.black)),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(30),
+                            bottomRight: Radius.circular(30)),
+                        color: Colors.amber,
+                      ),
+                      width: double.infinity,
+                      padding: EdgeInsets.all(25),
+                      child: const Text(
+                        "WOW NUTRITION",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                  ],
+                ))),
       ),
     );
   }
+}
 
-  Widget carouselView(int index) {
-    return carouselCard(dataList[index]);
-  }
-
-  Widget carouselCard(DataModel data) {
-    return Column(
-      children: [
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(30),
-                    boxShadow: [
-                      BoxShadow(
-                          offset: Offset(0, 4),
-                          blurRadius: 4,
-                          color: Colors.black26)
-                    ],
-                    image: DecorationImage(
-                        image: AssetImage(data.imageName), fit: BoxFit.fill))),
-          ),
+Widget carouse() {
+  return Container(
+    height: 200,
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: const [
+        CircleAvatar(
+          radius: 28,
+          backgroundImage: AssetImage("assets/images/wow_china.png"),
         ),
-        Padding(
-          padding: const EdgeInsets.only(top: 20),
-          child: Text(
-            "${data.title}",
-            style: TextStyle(
-                color: Colors.black87,
-                fontSize: 16,
-                fontWeight: FontWeight.bold),
-          ),
+        SizedBox(
+          width: 20,
+        ),
+        CircleAvatar(
+          radius: 28,
+          backgroundImage: AssetImage("assets/images/wow_chicken.png"),
+        ),
+        SizedBox(
+          width: 20,
+        ),
+        CircleAvatar(
+          radius: 28,
+          backgroundImage: AssetImage("assets/images/wow_instant.png"),
+        ),
+        SizedBox(
+          width: 20,
+        ),
+        CircleAvatar(
+          radius: 28,
+          backgroundImage: AssetImage("assets/images/logo.png"),
+        ),
+        SizedBox(
+          width: 20,
+        ),
+        CircleAvatar(
+          radius: 28,
+          backgroundImage: AssetImage("assets/images/china_belly.png"),
+        ),
+        SizedBox(
+          width: 20,
         ),
       ],
-    );
-  }
+    ),
+  );
+}
+
+Widget MyStack(context) {
+  return Stack(
+    // mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Positioned(
+        top: 300,
+        child: Container(
+          // color: Colors.red,
+          width: MediaQuery.of(context).size.width,
+          height: 650,
+          decoration: BoxDecoration(
+              // color: Colors.red,
+              image: DecorationImage(
+                  fit: BoxFit.fitWidth,
+                  image: AssetImage("assets/images/test_1.png"))),
+          // child: Text("123"),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: 250,
+              ),
+              SizedBox(
+                width: 150,
+                height: 40,
+                child: OutlinedButton(
+                  onPressed: () {},
+                  style: OutlinedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                  ),
+                  child: const Text('ADD'),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+      Positioned(top: 230, left: 0, right: 0, child: RoundCarousel()),
+    ],
+  );
 }
