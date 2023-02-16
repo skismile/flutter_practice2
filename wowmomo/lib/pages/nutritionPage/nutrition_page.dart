@@ -1,9 +1,6 @@
-import "dart:math";
-
 import "package:flutter/material.dart";
 import "package:wowmomo/components/bottom_navbar.dart";
 import "package:wowmomo/components/round_carousel.dart";
-import "package:wowmomo/pages/nutritionPage/models.dart";
 
 class NutritionPage extends StatefulWidget {
   const NutritionPage({Key? key}) : super(key: key);
