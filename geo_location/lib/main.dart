@@ -1,11 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  // String mapUrl = "test";
+  // test(lat, lon) async {
+  //   setState(() {
+  //     mapUrl = "https://www.google.com/maps/search/?api=1&query=$lat,$lon";
+  //   });
+  //   // String url = "https://www.google.com/maps/search/?api=1&query=$lat,$lon";
+  // }
+
   void getMyCurrentPosition() async {
 //permission
 
@@ -20,6 +34,8 @@ class MyApp extends StatelessWidget {
       Position currentPosition = await Geolocator.getCurrentPosition(
           desiredAccuracy: LocationAccuracy.best);
 
+      // test(currentPosition.latitude.toString(),
+      //     currentPosition.longitude.toString());
       print("latitude ${currentPosition.latitude.toString()}");
       print("longitude ${currentPosition.longitude.toString()}");
     }
@@ -31,12 +47,21 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         body: Center(
-          child: ElevatedButton(
-              onPressed: () {
-                getMyCurrentPosition();
-              },
-              child: Text("Get Current position")),
-        ),
+            child: Column(
+          children: [
+            ElevatedButton(
+                onPressed: () {
+                  getMyCurrentPosition();
+                },
+                child: Text("Get Current position")),
+            // ElevatedButton(
+            //     onPressed: () {
+            //       launchUrl(Uri.parse(mapUrl));
+            //     },
+            //     child: Text("$mapUrl")),
+            // Text(mapUrl)
+          ],
+        )),
       ),
     );
   }

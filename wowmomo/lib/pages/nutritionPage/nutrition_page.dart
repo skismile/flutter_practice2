@@ -19,6 +19,7 @@ class _NutritionPageState extends State<NutritionPage> {
         // color: Colors.red,
         child: SingleChildScrollView(
             child: SizedBox(
+                // ! hight ot dynamic how to fix it ?
                 height: 5000,
                 child: Stack(
                   children: [
@@ -129,7 +130,7 @@ Widget MyStack(context) {
           // color: Colors.red,
           width: MediaQuery.of(context).size.width,
           height: 650,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               // color: Colors.red,
               image: DecorationImage(
                   fit: BoxFit.fitWidth,
@@ -138,7 +139,7 @@ Widget MyStack(context) {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 250,
               ),
               SizedBox(
@@ -158,7 +159,7 @@ Widget MyStack(context) {
           ),
         ),
       ),
-      Positioned(top: 230, left: 0, right: 0, child: RoundCarousel()),
+      const Positioned(top: 230, left: 0, right: 0, child: RoundCarousel()),
     ],
   );
 }
