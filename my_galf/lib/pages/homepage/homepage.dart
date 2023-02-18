@@ -39,7 +39,7 @@ class Homepage extends StatelessWidget {
                     fit: BoxFit.fill,
                     image: AssetImage("assets/images/hero2.png"))),
           ),
-          Container(
+          SizedBox(
             height: 700,
             width: MediaQuery.of(context).size.width,
             child: Stack(
@@ -47,12 +47,13 @@ class Homepage extends StatelessWidget {
                 ProgressCard(context),
                 Positioned(
                   top: 130,
-                  left: 0,
-                  right: 0,
+                  left: 240,
+                  // right: 0,
                   child: Container(
-                    // width: MediaQuery.of(context).size.width * 0.7,
-                    width: 50,
-                    color: Colors.red,
+                    decoration: BoxDecoration(
+                        color: Colors.grey[100],
+                        borderRadius: BorderRadius.circular(10)),
+                    width: MediaQuery.of(context).size.width * 0.7,
                     height: 200,
                   ),
                 ),
@@ -223,7 +224,7 @@ Widget HeroCarousel(context) {
       scrollDirection: Axis.vertical,
       viewportFraction: 1.0,
     ),
-    items: [1, 2, 3, 4, 5].map((i) {
+    items: [1, 2, 3].map((i) {
       return Builder(
         builder: (BuildContext context) {
           return Container(
@@ -275,7 +276,7 @@ Widget BrandCard(context) {
     ),
   );
 }
-
+ 
 Widget BrandCarousel(context) {
   return Column(
     children: [
