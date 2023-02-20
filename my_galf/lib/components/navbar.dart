@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Navbar extends StatelessWidget {
   const Navbar({Key? key}) : super(key: key);
@@ -13,73 +14,79 @@ class Navbar extends StatelessWidget {
           color: Color(0xFF222f38),
           child: Row(
             children: [
-              const Expanded(
+              Expanded(
                 flex: 3,
                 child: Text(
                   "MYGALF - YOUR TRUSTED WELLNESS MARKETPLACE, YOUR FAVOURITE BRANDS, OUR BEST PRICES !",
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.white),
+                  // style: GoogleFonts.lato(fontStyle: FontStyle.italic),
+                  // style: TextStyle(color: Colors.white, fontFamily: "test"),
+
+                  style: GoogleFonts.rubik(
+                    textStyle: TextStyle(color: Colors.white),
+                  ),
                 ),
               ),
               Expanded(
                   flex: 1,
                   child: Row(
-                    children: const [
-                      Text(
-                        "NEWS",
-                        style: TextStyle(color: Colors.white),
+                    children: [
+                      Text("NEWS",
+                          style: GoogleFonts.rubik(
+                            textStyle: TextStyle(color: Colors.white),
+                          )),
+                      const SizedBox(
+                        width: 10,
                       ),
-                      SizedBox(
+                      Text("|",
+                          style: GoogleFonts.rubik(
+                            textStyle: TextStyle(color: Colors.white),
+                          )),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text("ABOUT US",
+                          style: GoogleFonts.rubik(
+                            textStyle: TextStyle(color: Colors.white),
+                          )),
+                      const SizedBox(
                         width: 10,
                       ),
                       Text(
                         "|",
-                        style: TextStyle(color: Colors.white),
+                        style: GoogleFonts.rubik(
+                            textStyle: TextStyle(color: Colors.white)),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
-                      Text(
-                        "ABOUT US",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "|",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "CONTACT",
-                        style: TextStyle(color: Colors.white),
-                      ),
+                      Text("CONTACT",
+                          style: GoogleFonts.rubik(
+                            textStyle: TextStyle(color: Colors.white),
+                          )),
                     ],
                   )),
               Expanded(
                   flex: 1,
-                  child: Row(children: const [
-                    Text(
-                      "DOWNLOAD APP",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    SizedBox(
+                  child: Row(children: [
+                    Text("DOWNLOAD APP",
+                        style: GoogleFonts.rubik(
+                          textStyle: TextStyle(color: Colors.white),
+                        )),
+                    const SizedBox(
                       width: 10,
                     ),
-                    Text(
-                      "|",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    SizedBox(
+                    Text("|",
+                        style: GoogleFonts.rubik(
+                          textStyle: TextStyle(color: Colors.white),
+                        )),
+                    const SizedBox(
                       width: 10,
                     ),
-                    Text(
-                      "CONTACT",
-                      style: TextStyle(color: Colors.white),
-                    ),
+                    Text("CONTACT",
+                        style: GoogleFonts.rubik(
+                          textStyle: TextStyle(color: Colors.white),
+                        )),
                   ]))
             ],
           ),
@@ -94,11 +101,31 @@ class Navbar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Image.network("assets/images/my_galf_logo.png"),
-              const Text("Galf Shop"),
-              const Text("Service"),
-              const Text("Events"),
-              const Text("Corporate Wellness"),
-              const Text("Lounge"),
+              Text(
+                "Galf Shop",
+                style: GoogleFonts.rubik(
+                    textStyle: TextStyle(fontWeight: FontWeight.bold)),
+              ),
+              Text(
+                "Service",
+                style: GoogleFonts.rubik(
+                    textStyle: TextStyle(fontWeight: FontWeight.bold)),
+              ),
+              Text(
+                "Events",
+                style: GoogleFonts.rubik(
+                    textStyle: TextStyle(fontWeight: FontWeight.bold)),
+              ),
+              Text(
+                "Corporate Wellness",
+                style: GoogleFonts.rubik(
+                    textStyle: TextStyle(fontWeight: FontWeight.bold)),
+              ),
+              Text(
+                "Lounge",
+                style: GoogleFonts.rubik(
+                    textStyle: TextStyle(fontWeight: FontWeight.bold)),
+              ),
               SizedBox(
                 height: 30,
                 width: MediaQuery.of(context).size.width * 0.1,

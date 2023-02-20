@@ -463,7 +463,7 @@ Widget Footer(context) {
   return Container(
     color: Colors.black,
     width: MediaQuery.of(context).size.width,
-    height: 500,
+    // height: 700,
     child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -963,6 +963,20 @@ Widget Footer(context) {
                 child: Image.asset("assets/images/appstore.png"),
               ),
             ],
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Container(
+            color: Color.fromARGB(255, 55, 70, 81),
+            height: 100,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: const [
+                Text("© 2022, My Gulf. All rights reserved"),
+                Text("Terms and Conditions | Privacy Policy"),
+              ],
+            ),
           )
         ]),
   );
