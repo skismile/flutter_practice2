@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';
 import 'package:wowmomo/pages/brand/brand.dart';
-import 'package:wowmomo/pages/home/home_page.dart';
+
 
 class Otp extends StatelessWidget {
   @override
@@ -48,7 +48,7 @@ Widget BackButton() {
       left: 10,
       top: 30,
       child: IconButton(
-        icon: Icon(
+        icon:const Icon(
           Icons.arrow_back_ios,
           size: 30,
         ),
@@ -68,7 +68,7 @@ Widget TopBox({required context}) {
       // width: 400,
 
       width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(
+      decoration:const BoxDecoration(
         image: DecorationImage(
           image: AssetImage("assets/images/log_back.png"),
           fit: BoxFit.fill,
@@ -94,7 +94,7 @@ Widget BottomBox({required context}) {
           const SizedBox(
             height: 70,
           ),
-          Text("We have sent a verification code to"),
+        const  Text("We have sent a verification code to"),
           const SizedBox(
             height: 10,
           ),
@@ -132,7 +132,7 @@ Widget BottomBox({required context}) {
             height: 50,
             child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  shape: StadiumBorder(),
+                  shape:const StadiumBorder(),
                   backgroundColor: Color.fromRGBO(249, 179, 19, 1),
                 ),
                 onPressed: () {
@@ -193,7 +193,7 @@ Widget BottomBox({required context}) {
               ),
             ],
           ),
-          SizedBox(
+        const  SizedBox(
             height: 30,
           )
         ],

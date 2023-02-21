@@ -406,8 +406,8 @@ offerLIstCard() {
 
 playWInCard({required url}) {
   return Container(
-    padding: EdgeInsets.all(5),
-    margin: EdgeInsets.all(13),
+    padding:const EdgeInsets.all(5),
+    margin:const EdgeInsets.all(13),
     decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         border: Border.all(width: 2, color: Colors.amber)),
@@ -420,7 +420,7 @@ playWInCard({required url}) {
 
 coupensCard({required context}) {
   return Container(
-    padding: EdgeInsets.only(left: 10),
+    padding:const EdgeInsets.only(left: 10),
     decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
@@ -436,7 +436,7 @@ coupensCard({required context}) {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          padding: EdgeInsets.only(top: 8, right: 10),
+          padding:const EdgeInsets.only(top: 8, right: 10),
           //color: Colors.blue,
           width: MediaQuery.of(context).size.width * 0.4,
           child: Row(mainAxisAlignment: MainAxisAlignment.end, children: const [
@@ -467,7 +467,7 @@ coupensCard({required context}) {
           height: 20,
         ),
         Container(
-          padding: EdgeInsets.only(left: 15),
+          padding:const EdgeInsets.only(left: 15),
           child: Container(
             height: 30,
             width: 120,

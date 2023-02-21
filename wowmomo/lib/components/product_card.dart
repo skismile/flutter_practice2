@@ -19,7 +19,7 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         // color: Colors.green,
-        margin: EdgeInsets.only(top: 10),
+        margin:const EdgeInsets.only(top: 10),
         height: 125,
         width: MediaQuery.of(context).size.width * 0.9,
         child: Row(

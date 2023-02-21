@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:wowmomo/pages/account/account.dart';
 import 'package:wowmomo/pages/home/home_page.dart';
+import 'package:wowmomo/pages/my_account/my_account.dart';
 import 'package:wowmomo/pages/nutritionPage/nutrition_page.dart';
 import 'package:wowmomo/pages/offerpage/offer_page.dart';
-import 'package:wowmomo/pages/wowclubpage/wowclub_page.dart';
+import 'package:wowmomo/pages/wow_club/wow_club.dart';
 
 class MyBottomNavbar extends StatefulWidget {
   @override
@@ -23,10 +23,10 @@ class _MyBottomNavbarState extends State<MyBottomNavbar> {
             : value == 1
                 ? Get.to(OfferPage())
                 : value == 2
-                    ? Get.to(WowclubPage())
+                    ? Get.to(WowClub())
                     : value == 3
                         ? Get.to(NutritionPage())
-                        : Get.to(AccountPage());
+                        : Get.to(MyAccount());
         setState(() {
           index = value;
         });

@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:get/get.dart';
 
-
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -49,7 +48,7 @@ Widget TopBox({required context}) {
       height: 900,
       // width: 400,
       width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage("assets/images/log_back.png"),
           fit: BoxFit.fill,
@@ -108,8 +107,8 @@ Widget BottomBox({required context}) {
           const SizedBox(
             height: 10,
           ),
-          Text("Experience Health and Happiness in every"),
-          Text("Order!"),
+          const Text("Experience Health and Happiness in every"),
+          const Text("Order!"),
           const SizedBox(
             height: 30,
           ),
@@ -140,7 +139,7 @@ Widget BottomBox({required context}) {
             width: 300,
             height: 50,
             child: TextField(
-              keyboardType: TextInputType.numberWithOptions(),
+              keyboardType: const TextInputType.numberWithOptions(),
               decoration: InputDecoration(
                 isDense: true,
                 hintText: 'Enter your number',
@@ -153,7 +152,7 @@ Widget BottomBox({required context}) {
                 ),
                 // prefixStyle: TextStyle(),
                 prefixIconConstraints:
-                    BoxConstraints(minWidth: 40, minHeight: 20),
+                    const BoxConstraints(minWidth: 40, minHeight: 20),
               ),
             ),
           ),
@@ -165,8 +164,8 @@ Widget BottomBox({required context}) {
             height: 50,
             child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  shape: StadiumBorder(),
-                  backgroundColor: Color.fromRGBO(249, 179, 19, 1),
+                  shape: const StadiumBorder(),
+                  backgroundColor: const Color.fromRGBO(249, 179, 19, 1),
                 ),
                 onPressed: () {
                   Get.toNamed("/otp");

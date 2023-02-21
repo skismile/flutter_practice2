@@ -69,7 +69,7 @@ class DeliveryPage extends StatelessWidget {
             ],
           ),
         ),
-        ...["d0", "dd"].map((ele) {
+        ...[1, 2, 3, 4, 5, 6].map((ele) {
           return ProductCard(
               image: "assets/images/vegtadka.png",
               title: "Veg Tarka",

@@ -13,7 +13,7 @@ class FixedNavbar extends StatelessWidget {
         children: [
           Container(
               // height: 100,
-              margin: EdgeInsets.only(top: 20),
+              margin:const EdgeInsets.only(top: 20),
               // padding: EdgeInsets.only(left: 5),
               width: MediaQuery.of(context).size.width * 0.6,
               // color: Colors.red,
@@ -34,7 +34,7 @@ class FixedNavbar extends StatelessWidget {
                     ],
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 10),
+                    padding:const EdgeInsets.only(left: 10),
                     child:const Text(
                         overflow: TextOverflow.ellipsis,
                         "A-1,101,North House Building"),
