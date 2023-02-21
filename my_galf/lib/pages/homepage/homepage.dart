@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:my_galf/components/navbar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -7,61 +8,76 @@ class Homepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentWidth = MediaQuery.of(context).size.width;
+    final currentScreen = currentWidth <= 300
+        ? "xsmall"
+        : currentWidth > 300 && currentWidth < 500
+            ? "small"
+            : currentWidth >= 500 && currentWidth <= 1100
+                ? "medium"
+                : "big";
     return Scaffold(
-        // appBar: AppBar(
-        //   title: Text("Home Page"),
-        // ),
+        appBar: AppBar(
+          title: Text("$currentWidth"),
+        ),
         body: Container(
-      width: double.infinity,
-      child: ListView(
-        children: [
-          //navbar is component
-          Navbar(),
-          //todo -  hero carousel shop now button pending
-          HeroCarousel(context),
-          const SizedBox(
-            height: 30,
+          width: double.infinity,
+          child: ListView(
+            children: [
+              //navbar is component
+              Navbar(currentScreen: currentScreen),
+              //todo -  hero carousel shop now button pending
+
+              HeroCarousel(context: context, currentScreen: currentScreen),
+              const SizedBox(
+                height: 30,
+              ),
+              //Shop by brads
+              BrandCarousel(context),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                // child: Image.asset(
+                //   "assets/images/hero2.png",
+                //   width: MediaQuery.of(context).size.width,
+                // ),
+                // ignore: unrelated_type_equality_checks
+                height: currentScreen == "big"
+                    ? 500
+                    // ignore: unrelated_type_equality_checks
+                    : currentScreen == "medium"
+                        ? 400
+                        : 200,
+                decoration: const BoxDecoration(
+                    // color: Colors.red,
+                    image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: AssetImage("assets/images/hero2.png"))),
+              ),
+              ProgressArea(context),
+              CorporateArea(context),
+              const SizedBox(
+                height: 30,
+              ),
+              CorporateWelness(context),
+              const SizedBox(
+                height: 20,
+              ),
+              TopPicks(context),
+              const SizedBox(
+                height: 10,
+              ),
+              FitnessFriday(context),
+              AdvantageMygalf(context),
+              Blog(context),
+              Footer(context),
+              const SizedBox(
+                height: 5000,
+              ),
+            ],
           ),
-          //Shop by brads
-          BrandCarousel(context),
-          SizedBox(
-            height: 20,
-          ),
-          Container(
-            // child: Image.asset(
-            //   "assets/images/hero2.png",
-            //   width: MediaQuery.of(context).size.width,
-            // ),
-            height: 600,
-            decoration: const BoxDecoration(
-                // color: Colors.red,
-                image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: AssetImage("assets/images/hero2.png"))),
-          ),
-          ProgressArea(context),
-          CorporateArea(context),
-          const SizedBox(
-            height: 30,
-          ),
-          CorporateWelness(context),
-          const SizedBox(
-            height: 20,
-          ),
-          TopPicks(context),
-          const SizedBox(
-            height: 10,
-          ),
-          FitnessFriday(context),
-          AdvantageMygalf(context),
-          Blog(context),
-          Footer(context),
-          const SizedBox(
-            height: 5000,
-          ),
-        ],
-      ),
-    ));
+        ));
   }
 }
 
@@ -1008,6 +1024,7 @@ Widget TopPicks(context) {
           physics: const NeverScrollableScrollPhysics(),
           crossAxisCount: 4,
           crossAxisSpacing: 1.0,
+          mainAxisSpacing: 20,
           // mainAxisSpacing: 2.0,/
           children: List.generate(8, (index) {
             return Center(
@@ -1022,10 +1039,12 @@ Widget TopPicks(context) {
 
 Widget TopPickCard(context) {
   return Container(
+    // margin: EdgeInsets.only(top: 20),
     color: Color.fromARGB(255, 255, 255, 255),
-    height: 360,
+    height: 380,
     width: 267,
     child: Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
           height: 230,
@@ -1055,21 +1074,52 @@ Widget TopPickCard(context) {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: const [
-                Text("Stars"),
-                Text("strike price"),
-                Text("price")
+              children: [
+                Row(
+                  children: [
+                    const Text(
+                      "2.75",
+                      style: TextStyle(
+                          color: Colors.amber,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10),
+                    ),
+                    const SizedBox(
+                      width: 2,
+                    ),
+                    RatingBarIndicator(
+                      rating: 2.75,
+                      itemBuilder: (context, index) => const Icon(
+                        Icons.star,
+                        color: Colors.amber,
+                      ),
+                      itemCount: 5,
+                      itemSize: 10,
+                      direction: Axis.horizontal,
+                    ),
+                  ],
+                ),
+                const Text(
+                  "₹1599",
+                  style: TextStyle(
+                      decoration: TextDecoration.lineThrough, fontSize: 15),
+                ),
+                const Text(
+                  "₹1199",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                )
               ],
             ),
           ],
         )),
-        SizedBox(
+        Container(
           height: 50,
-          width: MediaQuery.of(context).size.width * 0.8,
+          width: 250,
+          // color: Colors.red,
           child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5), // <-- Radius
+                  borderRadius: BorderRadius.circular(10), // <-- Radius
                 ),
               ),
               onPressed: () {},
@@ -1187,106 +1237,122 @@ Widget ProgressArea(context) {
       children: [
         ProgressCard(context),
         Positioned(
-          top: 130,
-          left: 240,
-          // right: 0,
-          child: Container(
-            decoration: BoxDecoration(
-                color: Colors.grey[100],
-                borderRadius: BorderRadius.circular(10)),
-            width: MediaQuery.of(context).size.width * 0.7,
-            height: 200,
+            top: 140,
+            left: 0,
+            right: 0,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset("assets/icons/Vector.png"),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Text(
-                      "28,58,000",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Text(
-                      "Steps",
-                      style: TextStyle(fontSize: 15),
-                    ),
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset("assets/icons/Vector_2.png"),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Text(
-                      "18,15,800",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Text(
-                      "Calories",
-                      style: TextStyle(fontSize: 15),
-                    ),
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset("assets/icons/distance.png"),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Text(
-                      "2177.8km",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Text(
-                      "Distence",
-                      style: TextStyle(fontSize: 15),
-                    ),
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset("assets/icons/point.png"),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Text(
-                      "12,500",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Text(
-                      "Points",
-                      style: TextStyle(fontSize: 15),
-                    ),
-                  ],
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.grey[100],
+                      borderRadius: BorderRadius.circular(10)),
+                  width: MediaQuery.of(context).size.width * 0.7,
+                  height: 170,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            "assets/icons/Vector.png",
+                            width: 25,
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const Text(
+                            "28,58,000",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const Text(
+                            "Steps",
+                            style: TextStyle(fontSize: 12),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            "assets/icons/Vector_2.png",
+                            width: 25,
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const Text(
+                            "18,15,800",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const Text(
+                            "Calories",
+                            style: TextStyle(fontSize: 12),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            "assets/icons/distance.png",
+                            width: 25,
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const Text(
+                            "2177.8km",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const Text(
+                            "Distence",
+                            style: TextStyle(fontSize: 12),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            "assets/icons/point.png",
+                            width: 25,
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const Text(
+                            "12,500",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const Text(
+                            "Points",
+                            style: TextStyle(fontSize: 12),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ],
-            ),
-          ),
-        ),
+            )),
       ],
     ),
   );
@@ -1441,13 +1507,17 @@ Widget ProgressCard(context) {
   );
 }
 
-Widget HeroCarousel(context) {
+Widget HeroCarousel({required context, required currentScreen}) {
   return CarouselSlider(
     options: CarouselOptions(
-      height: 500.0,
-      scrollDirection: Axis.vertical,
-      viewportFraction: 1.0,
-    ),
+        height: currentScreen == "small"
+            ? 300
+            : currentScreen == "medium"
+                ? 400.0
+                : 500,
+        scrollDirection: Axis.vertical,
+        viewportFraction: 1.0,
+        enableInfiniteScroll: false),
     items: [1, 2, 3].map((i) {
       return Builder(
         builder: (BuildContext context) {
@@ -1517,7 +1587,7 @@ Widget BrandCarousel(context) {
       ),
       Container(
           height: 350,
-          width: MediaQuery.of(context).size.width * 0.6,
+          width: MediaQuery.of(context).size.width * 0.8,
           child: ListView.builder(
             itemCount: 20,
             scrollDirection: Axis.horizontal,

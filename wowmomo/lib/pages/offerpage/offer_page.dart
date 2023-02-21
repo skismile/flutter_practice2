@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wowmomo/components/bottom_navbar.dart';
+import 'package:wowmomo/components/herocard.dart';
 
 class OfferPage extends StatefulWidget {
   const OfferPage({Key? key}) : super(key: key);
@@ -92,48 +93,7 @@ class _OfferPageState extends State<OfferPage> {
               ),
 
               //offer box
-              Container(
-                margin: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.amber,
-                ),
-                padding: EdgeInsets.all(20),
-                child: Row(
-                  children: [
-                    Image.asset('assets/image/b.png'),
-                    SizedBox(width: 15),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          "Buy 1 + Get 1 Free",
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontStyle: FontStyle.normal,
-                              fontWeight: FontWeight.w700),
-                        ),
-                        const Text(
-                          "Buy one Chicken Moburg and \n get another Chicken Moburg \n abosultely free!",
-                        ),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                              minimumSize: Size(0, 25),
-                              textStyle: const TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.bold)),
-                          child: const Text('199 ->',
-                              style: TextStyle(color: Colors.black)),
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              ),
+              Herocard(image: "assets/images/hero.png"),
 
               // Delivery and Wow Mony
               const SizedBox(height: 35),
@@ -150,7 +110,8 @@ class _OfferPageState extends State<OfferPage> {
                           border: Border.all(width: 1, color: Colors.amber)),
                       child: Row(
                         children: [
-                          Image.asset('assets/image/m_d.png'),
+                          // Image.asset('assets/images/logo.png'),
+                          const Icon(Icons.add),
                           const SizedBox(
                             width: 8,
                           ),
@@ -182,7 +143,8 @@ class _OfferPageState extends State<OfferPage> {
                           color: Colors.amber),
                       child: Row(
                         children: [
-                          Image.asset('assets/image/wallet.png'),
+                          // Image.asset('assets/icons/logo.png'),
+                          Icon(Icons.add),
                           SizedBox(width: 5),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -259,7 +221,7 @@ class _OfferPageState extends State<OfferPage> {
                   children: [
                     Container(
                       child: Image.asset(
-                        "assets/image/logo_momo.png",
+                        "assets/images/logo.png",
                         width: 60,
                       ),
                     ),
@@ -348,9 +310,9 @@ class _OfferPageState extends State<OfferPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    playWInCard(url: 'assets/image/wow_offer_1.png'),
-                    playWInCard(url: 'assets/image/wow_offer_2.png'),
-                    playWInCard(url: 'assets/image/wow_offer_3.png'),
+                    playWInCard(url: 'assets/images/logo.png'),
+                    playWInCard(url: 'assets/images/logo.png'),
+                    playWInCard(url: 'assets/images/logo.png'),
                   ],
                 ),
               ),
@@ -409,7 +371,7 @@ offerLIstCard() {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const CircleAvatar(
-            backgroundImage: AssetImage("assets/image/logo_momo.png"),
+            backgroundImage: AssetImage("assets/images/logo.png"),
             radius: 30,
           ),
           const SizedBox(
@@ -450,7 +412,8 @@ playWInCard({required url}) {
         borderRadius: BorderRadius.circular(10),
         border: Border.all(width: 2, color: Colors.amber)),
     child: Column(
-      children: [Image.asset(url)],
+      // children: [Image.asset(url)],
+      children: [Icon(Icons.add)],
     ),
   );
 }

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';
+import 'package:wowmomo/pages/brand/brand.dart';
 import 'package:wowmomo/pages/home/home_page.dart';
 
 class Otp extends StatelessWidget {
@@ -135,7 +136,7 @@ Widget BottomBox({required context}) {
                   backgroundColor: Color.fromRGBO(249, 179, 19, 1),
                 ),
                 onPressed: () {
-                  Get.to(HomePage());
+                  Get.to(Brand());
                 },
                 child: const Text("Enter")),
           ),
