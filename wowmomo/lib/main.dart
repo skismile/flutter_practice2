@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:wowmomo/pages/brand/brand_binding.dart';
-
 import 'package:wowmomo/pages/home/home_page.dart';
 import 'package:wowmomo/pages/login/login_page.dart';
 import 'package:wowmomo/pages/otp/otp.dart';

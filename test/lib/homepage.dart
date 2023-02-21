@@ -8,7 +8,8 @@ class Homepage extends StatelessWidget {
 
     return Scaffold(
       body: Container(
-        child: ResponsiveLayout(mobileView: mobileView(), deskView: deskView()),
+        // child: ResponsiveLayout(mobileView: mobileView(), deskView: deskView()),
+        child: ForGoogleMAp(),
       ),
     );
   }
@@ -23,5 +24,11 @@ Widget mobileView() {
 Widget deskView() {
   return const Center(
     child: Text("desk view"),
+  );
+}
+
+Widget ForGoogleMAp() {
+  return Container(
+    child: Text("data"),
   );
 }
