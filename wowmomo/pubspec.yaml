@@ -43,6 +43,7 @@ dependencies:
   flutter_speed_dial: ^6.2.0
   flutter_svg: ^2.0.1
   carousel_widget_3d: ^1.0.0+1
+  google_fonts: ^4.0.3
 
 dev_dependencies:
   flutter_test:

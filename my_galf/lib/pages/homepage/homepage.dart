@@ -17,67 +17,67 @@ class Homepage extends StatelessWidget {
                 ? "medium"
                 : "big";
     return Scaffold(
-        appBar: AppBar(
-          title: Text("$currentWidth"),
-        ),
+        // appBar: AppBar(
+        //   title: Text("$currentWidth"),
+        // ),
         body: Container(
-          width: double.infinity,
-          child: ListView(
-            children: [
-              //navbar is component
-              Navbar(currentScreen: currentScreen),
-              //todo -  hero carousel shop now button pending
+      width: double.infinity,
+      child: ListView(
+        children: [
+          //navbar is component
+          Navbar(currentScreen: currentScreen),
+          //todo -  hero carousel shop now button pending
 
-              HeroCarousel(context: context, currentScreen: currentScreen),
-              const SizedBox(
-                height: 30,
-              ),
-              //Shop by brads
-              BrandCarousel(context),
-              SizedBox(
-                height: 20,
-              ),
-              Container(
-                // child: Image.asset(
-                //   "assets/images/hero2.png",
-                //   width: MediaQuery.of(context).size.width,
-                // ),
-                // ignore: unrelated_type_equality_checks
-                height: currentScreen == "big"
-                    ? 500
-                    // ignore: unrelated_type_equality_checks
-                    : currentScreen == "medium"
-                        ? 400
-                        : 200,
-                decoration: const BoxDecoration(
-                    // color: Colors.red,
-                    image: DecorationImage(
-                        fit: BoxFit.fill,
-                        image: AssetImage("assets/images/hero2.png"))),
-              ),
-              ProgressArea(context),
-              CorporateArea(context),
-              const SizedBox(
-                height: 30,
-              ),
-              CorporateWelness(context),
-              const SizedBox(
-                height: 20,
-              ),
-              TopPicks(context),
-              const SizedBox(
-                height: 10,
-              ),
-              FitnessFriday(context),
-              AdvantageMygalf(context),
-              Blog(context),
-              Footer(context),
-              const SizedBox(
-                height: 5000,
-              ),
-            ],
+          HeroCarousel(context: context, currentScreen: currentScreen),
+          const SizedBox(
+            height: 30,
           ),
-        ));
+          //Shop by brads
+          BrandCarousel(context),
+          SizedBox(
+            height: 20,
+          ),
+          Container(
+            // child: Image.asset(
+            //   "assets/images/hero2.png",
+            //   width: MediaQuery.of(context).size.width,
+            // ),
+            // ignore: unrelated_type_equality_checks
+            height: currentScreen == "big"
+                ? 500
+                // ignore: unrelated_type_equality_checks
+                : currentScreen == "medium"
+                    ? 400
+                    : 200,
+            decoration: const BoxDecoration(
+                // color: Colors.red,
+                image: DecorationImage(
+                    fit: BoxFit.fill,
+                    image: AssetImage("assets/images/hero2.png"))),
+          ),
+          ProgressArea(context),
+          CorporateArea(context),
+          const SizedBox(
+            height: 30,
+          ),
+          CorporateWelness(context),
+          const SizedBox(
+            height: 20,
+          ),
+          TopPicks(context),
+          const SizedBox(
+            height: 10,
+          ),
+          FitnessFriday(context),
+          AdvantageMygalf(context),
+          Blog(context),
+          Footer(context),
+          const SizedBox(
+            height: 5000,
+          ),
+        ],
+      ),
+    ));
   }
 }
 

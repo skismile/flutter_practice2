@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:wowmomo/components/colors.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -13,8 +15,8 @@ class LoginPage extends StatelessWidget {
       child: Stack(
         children: [
           TopBox(context: context),
+          BottomBox(context: context),
           WowLogo(),
-          BottomBox(context: context)
         ],
       ),
     ));
@@ -25,17 +27,33 @@ class LoginPage extends StatelessWidget {
 
 Widget WowLogo() {
   return Positioned(
-      top: 100,
-      left: 0,
-      right: 0,
-      child: Image.asset(
-        "assets/images/logo.png",
+    top: 100,
+    left: 0,
+    right: 0,
+    // child: Image.asset(
+    //   "assets/images/logo_eats.png",
+    //   width: 100,
+    //   height: 100,
+    // )
+    child: CircleAvatar(
+      radius: 60,
+      backgroundColor: Colors.transparent,
+      // backgroundImage: AssetImage("assets/images/logo_eats.png")
+
+      child: Container(
         width: 100,
         height: 100,
-      )
-      // NetworkImage(
-      //     "https://vrchennai.com/UploadFile/StoreImage/wow-momo-th.jpg"),
-      );
+        decoration: BoxDecoration(
+            image: const DecorationImage(
+                fit: BoxFit.fill,
+                image: AssetImage("assets/images/logo_eats.png")),
+            color: Colors.red,
+            borderRadius: BorderRadius.circular(50)),
+      ),
+    ),
+    // NetworkImage(
+    //     "https://vrchennai.com/UploadFile/StoreImage/wow-momo-th.jpg"),
+  );
 }
 
 // ignore: non_constant_identifier_names
@@ -76,39 +94,57 @@ Widget BottomBox({required context}) {
           const SizedBox(
             height: 70,
           ),
-          const Text(
-            "#MoreWOWEveryday",
-            style: TextStyle(
-                color: Color.fromRGBO(249, 179, 19, 1),
-                // color: Colors.amber[700],
-                fontWeight: FontWeight.bold,
-                fontSize: 30),
-          ),
+          Text("#MoreWOWEveryday",
+              style: GoogleFonts.inter(
+                textStyle: const TextStyle(
+                    fontStyle: FontStyle.italic,
+                    color: primaryAmberColor,
+                    // color: Colors.amber[700],
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24.8),
+              )),
           RichText(
-            text: const TextSpan(
+            text: TextSpan(
                 // text: "Fulfill your",
                 // style: TextStyle(color: Colors.black, fontSize: 30),
                 children: [
                   TextSpan(
                     text: " Fulfill your",
-                    style: TextStyle(color: Colors.black, fontSize: 30),
+                    style: GoogleFonts.inter(
+                        textStyle: const TextStyle(
+                            fontStyle: FontStyle.italic,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                            fontSize: 24.8)),
                   ),
                   TextSpan(
-                    text: " cravings",
-                    style: TextStyle(
-                        color: Color.fromRGBO(249, 179, 19, 1), fontSize: 30),
-                  ),
+                      text: " cravings",
+                      style: GoogleFonts.inter(
+                        textStyle: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic,
+                            color: primaryAmberColor,
+                            fontSize: 24.8),
+                      )),
                   TextSpan(
-                    text: " here!",
-                    style: TextStyle(color: Colors.black, fontSize: 30),
-                  ),
+                      text: " here!",
+                      style: GoogleFonts.inter(
+                        textStyle: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic,
+                            color: Colors.black,
+                            fontSize: 24.8),
+                      )),
                 ]),
           ),
           const SizedBox(
             height: 10,
           ),
-          const Text("Experience Health and Happiness in every"),
-          const Text("Order!"),
+          Text(
+            "Experience Health and Happiness in every\nOrder!",
+            textAlign: TextAlign.center,
+            style: GoogleFonts.inter(textStyle: const TextStyle(fontSize: 12)),
+          ),
           const SizedBox(
             height: 30,
           ),
@@ -116,16 +152,19 @@ Widget BottomBox({required context}) {
             width: 300,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
+              children: [
                 Expanded(flex: 1, child: Divider(color: Colors.black)),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
-                Text(
-                  "Sign In / Register",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
+                Text("Sign In / Register",
+                    style: GoogleFonts.inter(
+                      textStyle: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 11,
+                          color: Color.fromRGBO(45, 45, 45, 1)),
+                    )),
+                const SizedBox(
                   width: 10,
                 ),
                 Expanded(child: Divider(color: Colors.black)),
@@ -165,12 +204,15 @@ Widget BottomBox({required context}) {
             child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   shape: const StadiumBorder(),
-                  backgroundColor: const Color.fromRGBO(249, 179, 19, 1),
+                  backgroundColor: primaryAmberColor,
                 ),
                 onPressed: () {
                   Get.toNamed("/otp");
                 },
-                child: const Text("Next")),
+                child: const Text(
+                  "Next",
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                )),
           ),
           const SizedBox(
             height: 10,
