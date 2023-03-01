@@ -401,7 +401,7 @@ class Footer extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            "GALF SHOPPING",
+                            "GALF SHOPPINGss",
                             textAlign: TextAlign.start,
                             style: TextStyle(
                                 color: Colors.amber,
@@ -498,13 +498,13 @@ class Footer extends StatelessWidget {
                           ),
                         ]),
                   ),
-                  const SizedBox(
-                    height: 250,
-                    child: VerticalDivider(
-                      color: Colors.white,
-                      thickness: 2,
-                    ),
-                  )
+                  // const SizedBox(
+                  //   height: 250,
+                  //   child: VerticalDivider(
+                  //     color: Colors.white,
+                  //     thickness: 2,
+                  //   ),
+                  // )
                 ],
               ),
             ),
@@ -534,8 +534,9 @@ class Footer extends StatelessWidget {
             Container(
               color: Color.fromARGB(255, 55, 70, 81),
               height: 100,
+              padding: const EdgeInsets.only(left: 50, right: 50),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
                   Text(
                     "© 2022, My Gulf. All rights reserved",

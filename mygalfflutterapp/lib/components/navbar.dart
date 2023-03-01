@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_galf/components/colors.dart';
 
@@ -11,17 +12,17 @@ class Navbar extends StatelessWidget {
     return Column(
       children: [
         //! nav 1 start from here
-        currentScreen == "big"
-            ? Container(
-                height: 33,
-                width: MediaQuery.of(context).size.width,
-                color: mainThemeColor,
-                child: Row(
-                  children: [
-                    const SizedBox(
-                      width: 141,
-                    ),
-                    SizedBox(
+        // currentScreen == "big"
+        //     ?
+        Container(
+          height: 33,
+          width: MediaQuery.of(context).size.width,
+          color: mainThemeColor,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              currentScreen == "big"
+                  ? SizedBox(
                       height: 12,
                       width: 536,
                       child: Text(
@@ -35,118 +36,119 @@ class Navbar extends StatelessWidget {
                               color: Color(0xFFFFFFFF), fontSize: 11),
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      width: 58,
-                    ),
-                    SizedBox(
-                        width: 185,
-                        height: 20,
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              width: 31,
-                              height: 13,
-                              child: Text("NEWS",
-                                  style: GoogleFonts.rubik(
-                                    textStyle: const TextStyle(
-                                        color: Color(0xFFFFFFFF),
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 11),
-                                  )),
-                            ),
-                            const SizedBox(
-                              width: 12,
-                            ),
-                            const SizedBox(
-                              width: 0,
-                              child: VerticalDivider(
-                                color: Color(0xFFFFFFFF),
-                                thickness: 2,
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 12,
-                            ),
-                            SizedBox(
-                              height: 13,
-                              width: 55,
-                              child: Text("ABOUT US",
-                                  style: GoogleFonts.rubik(
-                                    textStyle: const TextStyle(
-                                        color: Color(0xFFFFFFFF),
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 11),
-                                  )),
-                            ),
-                            const SizedBox(
-                              width: 12,
-                            ),
-                            const SizedBox(
-                              width: 0,
-                              child: VerticalDivider(
-                                color: Color(0xFFFFFFFF),
-                                thickness: 2,
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 12,
-                            ),
-                            SizedBox(
-                              width: 51,
-                              height: 13,
-                              child: Text("CONTACT",
-                                  style: GoogleFonts.rubik(
-                                    textStyle: const TextStyle(
-                                        color: Color(0xFFFFFFFF),
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 11),
-                                  )),
-                            ),
-                          ],
+                    )
+                  : SizedBox(),
+              const SizedBox(
+                width: 58,
+              ),
+              SizedBox(
+                  width: 185,
+                  height: 20,
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 31,
+                        height: 13,
+                        child: Text("NEWS",
+                            style: GoogleFonts.rubik(
+                              textStyle: const TextStyle(
+                                  color: Color(0xFFFFFFFF),
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 11),
+                            )),
+                      ),
+                      const SizedBox(
+                        width: 12,
+                      ),
+                      const SizedBox(
+                        width: 0,
+                        child: VerticalDivider(
+                          color: Color(0xFFFFFFFF),
+                          thickness: 2,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 12,
+                      ),
+                      SizedBox(
+                        height: 13,
+                        width: 55,
+                        child: Text("ABOUT US",
+                            style: GoogleFonts.rubik(
+                              textStyle: const TextStyle(
+                                  color: Color(0xFFFFFFFF),
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 11),
+                            )),
+                      ),
+                      const SizedBox(
+                        width: 12,
+                      ),
+                      const SizedBox(
+                        width: 0,
+                        child: VerticalDivider(
+                          color: Color(0xFFFFFFFF),
+                          thickness: 2,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 12,
+                      ),
+                      SizedBox(
+                        width: 51,
+                        height: 13,
+                        child: Text("CONTACT",
+                            style: GoogleFonts.rubik(
+                              textStyle: const TextStyle(
+                                  color: Color(0xFFFFFFFF),
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 11),
+                            )),
+                      ),
+                    ],
+                  )),
+              const SizedBox(
+                width: 58,
+              ),
+              SizedBox(
+                  width: 161,
+                  height: 20,
+                  child: Row(children: [
+                    Text("DOWNLOAD APP",
+                        style: GoogleFonts.rubik(
+                          textStyle: const TextStyle(
+                              color: Color(0xFFFFFFFF),
+                              fontWeight: FontWeight.w500,
+                              fontSize: 11),
                         )),
                     const SizedBox(
-                      width: 58,
+                      width: 12,
                     ),
-                    SizedBox(
-                        width: 161,
-                        height: 20,
-                        child: Row(children: [
-                          Text("DOWNLOAD APP",
-                              style: GoogleFonts.rubik(
-                                textStyle: const TextStyle(
-                                    color: Color(0xFFFFFFFF),
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 11),
-                              )),
-                          const SizedBox(
-                            width: 12,
-                          ),
-                          const SizedBox(
-                            width: 0,
-                            child: VerticalDivider(
+                    const SizedBox(
+                      width: 0,
+                      child: VerticalDivider(
+                        color: Color(0xFFFFFFFF),
+                        thickness: 2,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 12,
+                    ),
+                    Text("CONTACT",
+                        style: GoogleFonts.rubik(
+                          textStyle: const TextStyle(
                               color: Color(0xFFFFFFFF),
-                              thickness: 2,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 12,
-                          ),
-                          Text("CONTACT",
-                              style: GoogleFonts.rubik(
-                                textStyle: const TextStyle(
-                                    color: Color(0xFFFFFFFF),
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 11),
-                              )),
-                        ]))
-                  ],
-                ),
-              )
-            : SizedBox(),
+                              fontWeight: FontWeight.w500,
+                              fontSize: 11),
+                        )),
+                  ]))
+            ],
+          ),
+        ),
+        // : SizedBox(),
 
         //! nav 2 start from here
-        Container(
+        SizedBox(
           // color: Colors.red,
           height: currentScreen == "big"
               ? 80
@@ -157,64 +159,98 @@ class Navbar extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Image.network("assets/images/my_galf_logo.png"),
-              Text(
-                "Galf Shop",
-                style: GoogleFonts.rubik(
-                    textStyle: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: currentScreen == "small"
-                            ? 10
-                            : currentScreen == "medium"
-                                ? 12
-                                : 13)),
+              GestureDetector(
+                  onTap: () {
+                    Get.toNamed("/");
+                  },
+                  child: Image.network("assets/images/my_galf_logo.png")),
+              GestureDetector(
+                onTap: () {
+                  Get.toNamed("/products");
+                },
+                child: Text(
+                  "Galf Shop",
+                  style: GoogleFonts.rubik(
+                      textStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: currentScreen == "small"
+                              ? 10
+                              : currentScreen == "medium"
+                                  ? 12
+                                  : 13)),
+                ),
               ),
-              Text(
-                "Service",
-                style: GoogleFonts.rubik(
-                    textStyle: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: currentScreen == "small"
-                            ? 10
-                            : currentScreen == "medium"
-                                ? 12
-                                : 13)),
+              GestureDetector(
+                onTap: () {
+                  Get.toNamed("/services");
+                },
+                child: Text(
+                  "Servicess",
+                  style: GoogleFonts.rubik(
+                      textStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: currentScreen == "small"
+                              ? 10
+                              : currentScreen == "medium"
+                                  ? 12
+                                  : 13)),
+                ),
               ),
-              Text(
-                "Events",
-                style: GoogleFonts.rubik(
-                    textStyle: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: currentScreen == "small"
-                            ? 10
-                            : currentScreen == "medium"
-                                ? 12
-                                : 13)),
+              GestureDetector(
+                onTap: () {
+                  Get.toNamed("/events");
+                  // Get.to(EventsPage(),
+                  //     transition: Transition.rightToLeft,
+                  //     duration: Duration(milliseconds: 1000));
+                },
+                child: Text(
+                  "Events",
+                  style: GoogleFonts.rubik(
+                      textStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: currentScreen == "small"
+                              ? 10
+                              : currentScreen == "medium"
+                                  ? 12
+                                  : 13)),
+                ),
               ),
-              Text(
-                "Corporate Wellness",
-                style: GoogleFonts.rubik(
+              GestureDetector(
+                onTap: () {
+                  Get.toNamed("/corporate-wellness");
+                },
+                child: Text(
+                  "Corporate Wellness",
+                  style: GoogleFonts.rubik(
                     textStyle: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: currentScreen == "small"
                             ? 10
                             : currentScreen == "medium"
                                 ? 12
-                                : 13)),
+                                : 13),
+                  ),
+                ),
               ),
-              Text(
-                "Lounge",
-                style: GoogleFonts.rubik(
+              GestureDetector(
+                onTap: () {
+                  Get.toNamed("/lounge");
+                },
+                child: Text(
+                  "Lounge",
+                  style: GoogleFonts.rubik(
                     textStyle: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: currentScreen == "small"
                             ? 10
                             : currentScreen == "medium"
                                 ? 12
-                                : 13)),
+                                : 13),
+                  ),
+                ),
               ),
               SizedBox(
-                height: 30,
+                height: 33,
                 width: MediaQuery.of(context).size.width * 0.1,
                 child: TextField(
                   decoration: InputDecoration(
